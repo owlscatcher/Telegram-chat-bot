@@ -2,7 +2,7 @@ from datetime import datetime
 import discord
 from discord.ext import commands
 import security
-from roll_char import rollCharCommand
+from character import get_random_character
 
 TOKEN = security.api_key.get(security.DISCORD_KEY)
 bot = commands.Bot(command_prefix='!')
@@ -20,7 +20,7 @@ async def clear(ctx, amount):
 
 @commands.command()
 async def roll_char(ctx):
-    message = rollCharCommand()
+    message = get_random_character()
     msg_c = message.get('text')
     msg_p = message.get('pic')
     await ctx.send(msg_c)
